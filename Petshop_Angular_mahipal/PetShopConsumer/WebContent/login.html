@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+</head>
+<body>
+<div class="alert alert-danger" role="alert" ng-hide="myVar">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Error:</span>
+  Authentication Fail
+</div>
+<div style=" width: 400px; margin-top:40px; height: 200px; float: left; box-shadow: 10px 10px 5px #888888;">
+	<form name="myForm" novalidate>
+	<h2>Login</h2>
+	Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="email" name="email" placeholder="Email" ng-model="email" required/>
+	<span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+  	<span ng-show="myForm.email.$error.required">Email is required.</span>
+ 	<span ng-show="myForm.email.$error.email">Invalid email address.</span>
+ 	</span>
+	<br><br>
+	Password: <input type="password" name="password" placeholder="password" ng-model="password" required/>
+	<span style="color:red" ng-show="myForm.password.$dirty && myForm.password.$invalid">
+  	<span ng-show="myForm.email.$error.required">Required.</span>
+  	</span>
+  	<br><br>
+	<input type="submit"  value="Register" class="ngdialog-button ngdialog-button-secondary" ng-click="registerUser()"/>
+	<input type="submit" value="Login" ng-disabled="myForm.email.$dirty && myForm.email.$invalid || myForm.password.$dirty && myForm.password.$invalid " class="ngdialog-button ngdialog-button-primary" ng-click="login(email,password)"/>
+	</form>
+	<br><br><br><br><br>	
+</div>
+</body>
+</html>

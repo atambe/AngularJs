@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+</head>
+<body>
+	<!-- Page Content -->
+	<div class="row" style="box-shadow: 10px 10px 5px #888888;" >
+		<div ng-show="items.length > 0" style="float: left; text-align: center; width: 32%; margin-top: 25px;">
+			<h3>My Cart Details</h3>
+			<table border="2" cellpadding="3" id="myCart" style="width:700px">			
+    			<tr>
+        			<th style="border-spacing: 3px;">Sr No.</th>
+    			
+        			<th style="border-spacing: 3px;">Product Id</th>        			
+    			
+        			<th style="border-spacing: 3px;">Product Name</th>
+    			
+        			<th style="border-spacing: 3px;">Quantity</th>
+        		
+        			<th style="border-spacing: 3px;">Price</th>
+        			
+        			<th style="border-spacing: 3px;" colspan="2">Actions</th>
+        		</tr>
+        		<tr ng-repeat="x in items">
+				<td style="border-spacing: 3px;"> {{$index + 1}} </td>
+				<td style="border-spacing: 3px;"> {{x.productId}} </td>
+				<td style="border-spacing: 3px;"> {{x.productName}} </td>
+				<td style="border-spacing: 3px;"><input type ="text" onkeypress="return isNumberKey(event)" maxlength="4" size="3" id = "id" ng-model="user"  placeholder="{{x.quantity}}"/></td>				
+				<td style="border-spacing: 3px;"> {{x.price * x.quantity}} </td>				
+				<td>
+					<input type="button" value = "Delete" ng-click="removeProduct(x)"/>
+				</td>
+				<td>
+					<input type="button" value = "Update" ng-click ="updateProduct(user,x)"/>
+				</td>
+				</tr>	
+			</table>        	
+			<br/>
+			<div ng-show="items.length > 0" style="float:left; margin-left:400px;">
+			<font size="3" color="blue" ><b>Total :  {{ total()}} RS.</b></font>
+			<br/><br/>
+			<input type="submit" value="Buy Now" style="color: #FFF; background-color: #900; font-weight: bold; width: 20em; height: 2em;" /><br/><br/>
+			</div>
+		</div>
+		<div ng-show='items == null'>
+			<div class="alert alert-danger" role="alert" ng-hide="myVar">
+  			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  			<span class="sr-only">Error:</span>
+  			Your cart is empty.
+			</div>
+		</div>
+	</div>
+	
+</body>

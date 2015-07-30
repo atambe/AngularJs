@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Product Info Page</title>
+</head>
+<body>
+			<!-- First Row -->
+			<div  ng-repeat="infoPro in info" ng-show="info.length > 0" >
+			<div id="pannel1" style="float: left; margin-left: 50px; margin-top: 50px">
+				<img src="./images/category{{infoPro.groupId}}/{{infoPro.imgName}}" />
+			</div>
+
+			<!-- Second row -->
+			<div id="pannel" style="float: right; margin-right: 150px; margin-top: 50px">			
+				<form onsubmit="return validateQuantity();" name="buyNow" method="post">
+					<input type="hidden" name="availableQun" id="availableQun" value="{{infoPro.quantity}}" /> 
+					<input type="hidden" name="pro_id" id="hide" value="{{infoPro.productId}}" /> 
+					<font color="black">Quantity:</font>&nbsp;
+					<input type="text" name="quantity" maxlength="4" size="3" value="1" onkeypress="return isNumberKey(event)"><br></br> 
+					<input type="submit" value="Buy Now" style="color: #FFF; background-color: #900; font-weight: bold; width: 20em; height: 2em" />&nbsp;&nbsp;&nbsp;&nbsp;
+				</form><br />
+				<form name="addCart" method="post">
+					<input type="hidden" name="availableQun" id="availableQun" value="{{infoPro.quantity}}"></input> 
+					<input type="hidden" name="pro_id" id="hide" value="{{infoPro.productId}}"/>
+					<input type="hidden" name="qun" id="hide" value=""></input> 
+					<!-- <input type="button" onclick="validateQuantity(availableQun.value)" value="Add To Cart" style="color: #FFF; background-color: #900; font-weight: bold; width: 20em; height: 2em;" /> -->
+					<input type="button" ng-click ="validateQuantity(infoPro)" value="Add To Cart" style="color: #FFF; background-color: #900; font-weight: bold; width: 20em; height: 2em;" />
+				</form>
+				<script type="text/javascript" src="js/domstorage-persist.js"></script>
+			</div>
+			<br></br> <br></br> <br></br> <br></br>
+			<h3 style="margin-left: 50px">
+				<font size="5" color="blue">{{infoPro.productName}}</font>
+			</h3>
+			<p style="margin-left: 50px; margin-right: 50px">
+				<font size="3" color="black">{{infoPro.description}}</font>
+			</p>
+			<br></br> <br />
+			</div>
+</body>
+</html>
