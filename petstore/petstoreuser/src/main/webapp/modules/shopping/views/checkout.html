@@ -1,0 +1,36 @@
+<label> <input type="checkbox" ng-model="checked"
+	style="float: left; margin-right: 10px;"> Show Detail
+	Invoice...
+</label>
+<div class="check-element sample-show-hide" ng-show="checked"
+	style="clear: both;">
+
+	<table class="table">
+		<tr>
+
+			<th>Name</th>
+			<th>Qty</th>
+			<th>Cost</th>
+			<th>Total</th>
+			<th></th>
+		</tr>
+		<tr ng:repeat="item in invoice.items">
+			<td>{{item.name}}</td>
+			<td>{{item.qty}}</td>
+			<td>{{item.cost | currency}}</td>
+			<td>{{item.qty * item.cost | currency}}</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><a href ng:click="hideCheckout()" class="btn btn-small">
+					Back To Shopping Cart </a></td>
+			<td></td>
+			<td>Total:</td>
+			<td>{{total() | currency}}</td>
+		</tr>
+	</table>
+</div>
+<div class="alert alert-info">Your Total Invoice cost is {{total()
+	| currency}}.</div>
+
+<button ng:click="createOrder()" class="btn btn-danger">Buy Now</button>

@@ -1,0 +1,63 @@
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+
+<div ng-show="error" class="alert alert-danger">{{error}}</div>
+<div ng-show="showInfoMsg" class="alert alert-info">
+		    {{infoMsg}}
+		</div>
+
+		<div class="col-sm-3 col-md-2 sidebar" >
+          <ul class="nav nav-sidebar">
+          	<h3>All Categories</h3>
+            	<li  class="view-slide-in" ng-repeat="x in categories" ><a href="" ng:click="getProductsByCategory(x.id)">{{ x.name }}</a></li>
+          
+          </ul>          
+          
+        </div>
+        <div class="col-sm-9 col-sm-offset-2 col-md-8 col-md-offset-2">
+        <a style="float: right" href="" ng:click="showshoppingCart()" ><img src="resources/images/my_cart.png">{{invoice.items.length}} Show Cart</a>  
+          <h1 class="page-header">{{subheading}}</h1> 	 
+		  	
+	          <div>
+	         	 Search Product: <input type="text" ng-model="searchKeyWord">     
+	          	<button ng:click="searchProduct(searchKeyWord)" class="btn btn-success">Search</button>
+	          	
+			  </div>
+		  </br>
+         
+          <div  class="check-element sample-show-hide" ng-show="showProducts" >
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+				  <th>Description</th>
+				  <th>Unit Cost</th>
+				   <th></th>                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="view-slide-in" ng-repeat="y in products">
+                  <td>{{ y.name }}</td>
+                  <td>{{ y.description }}</td>
+                  <td>{{ y.unitCost }}</td>
+                  <td><a href="" ng:click="addToCart(y)">addToCart</a></td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+
+
+	<div ng-show="showCart"  ng-include="'modules/shopping/views/cart.html'" class="check-element sample-show-hide">
+		
+	</div>
+	
+	<div ng-init="checked=false" ng-include="'modules/shopping/views/checkout.html'"  ng-show="checkout">
+		
+	</div>
+	
+
+
+</div>
+
+       
